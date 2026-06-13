@@ -1,0 +1,187 @@
+/* ============================================================
+   NO*Tokleperlen — theme
+   Identity: near-black sidebar + brass/gold mark + bright,
+   photo-first content. Display: Fraunces. Body/UI: Inter.
+   ============================================================ */
+:root {
+  --ink:        #17181a;   /* sidebar / dark chrome      */
+  --ink-2:      #202225;   /* raised dark surfaces       */
+  --gold:       #c79a44;   /* brass accent (the wing)    */
+  --gold-soft:  #e4c984;
+  --paper:      #fbfaf8;   /* content background         */
+  --text:       #23211e;
+  --muted:      #6d6a64;
+  --line:       #e7e3da;
+  --sidebar-w:  300px;
+  --maxw:       720px;
+  --r:          10px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--paper);
+  line-height: 1.65;
+  font-size: 17px;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--text); text-underline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: #fff; padding: .6rem 1rem; z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Layout ---------- */
+.layout { display: flex; min-height: 100vh; }
+.main-col { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+main { flex: 1; }
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  width: var(--sidebar-w);
+  flex: 0 0 var(--sidebar-w);
+  background: var(--ink);
+  color: #d9d6cf;
+  padding: 2.4rem 1.8rem;
+  position: sticky; top: 0; align-self: flex-start;
+  height: 100vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.brand { text-decoration: none; color: inherit; display: block; }
+.brand-mark { color: var(--gold); margin-bottom: .9rem; }
+.brand-name {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600; font-size: 1.32rem; letter-spacing: .04em;
+  color: #f3f1ec;
+}
+.brand-name .star { color: var(--gold); }
+.brand-tagline {
+  display: block; margin-top: .45rem;
+  font-size: .78rem; line-height: 1.5; color: #9a968d; letter-spacing: .01em;
+}
+
+.nav ul { list-style: none; margin: 0; padding: 0; }
+.nav > ul > li { margin: 0; }
+.nav a {
+  display: block; text-decoration: none; color: #cfccc4;
+  font-size: .8rem; letter-spacing: .13em; text-transform: uppercase;
+  padding: .6rem 0; border-bottom: 1px solid #2a2c2f;
+  transition: color .15s ease;
+}
+.nav a:hover { color: var(--gold-soft); }
+.nav a[aria-current="page"] { color: var(--gold); }
+.nav .submenu a {
+  text-transform: none; letter-spacing: .02em; font-size: .82rem;
+  color: #a8a49b; padding: .35rem 0 .35rem .9rem; border-bottom: 0;
+}
+.nav .submenu { margin: .1rem 0 .5rem; }
+.nav .has-children > a { border-bottom: 1px solid #2a2c2f; }
+
+.nav-toggle {
+  display: none; align-items: center; gap: .5rem;
+  background: none; border: 1px solid #3a3c40; color: #e9e6df;
+  font: inherit; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: .55rem .9rem; border-radius: var(--r); cursor: pointer;
+}
+.nav-toggle-bar { width: 16px; height: 2px; background: var(--gold); box-shadow: 0 5px 0 var(--gold), 0 -5px 0 var(--gold); }
+
+/* ---------- Hero (home) ---------- */
+.hero {
+  position: relative; min-height: 78vh; display: flex; align-items: flex-end;
+  background: var(--ink-2); overflow: hidden;
+}
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero--placeholder {
+  background:
+    radial-gradient(120% 90% at 70% 20%, #34373c 0%, #191a1c 70%);
+}
+.hero-overlay {
+  position: relative; padding: 2.6rem 2.8rem 3rem;
+  background: linear-gradient(to top, rgba(10,10,11,.78), rgba(10,10,11,0));
+  width: 100%;
+}
+.hero-title {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600;
+  color: #fff; margin: 0; font-size: clamp(2rem, 5vw, 3.3rem); line-height: 1.05;
+  letter-spacing: .01em;
+}
+.hero-tagline { color: #ece9e2; margin: .7rem 0 0; font-size: 1.05rem; max-width: 40ch; }
+
+/* ---------- Content ---------- */
+.page { padding: 3rem 2.8rem 3.5rem; max-width: calc(var(--maxw) + 5.6rem); }
+.page-head { margin-bottom: 1.6rem; }
+.page-title {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600;
+  font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.1; margin: 0;
+  position: relative; padding-bottom: .7rem;
+}
+.page-title::after { content: ""; display: block; width: 54px; height: 3px; background: var(--gold); margin-top: .8rem; }
+
+.prose { max-width: var(--maxw); }
+.prose > * + * { margin-top: 1.05rem; }
+.prose h2 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.45rem; margin-top: 2.2rem; line-height: 1.2; }
+.prose h3 { font-weight: 600; font-size: 1.08rem; letter-spacing: .01em; margin-top: 1.6rem; }
+.prose a { color: #9a772e; }
+.prose a:hover { color: var(--gold); }
+.prose ul, .prose ol { padding-left: 1.3rem; }
+.prose li + li { margin-top: .35rem; }
+.prose blockquote { border-left: 3px solid var(--gold); margin: 1.4rem 0; padding: .2rem 0 .2rem 1.1rem; color: var(--muted); font-style: italic; }
+.prose table { width: 100%; border-collapse: collapse; margin: 1.4rem 0; font-size: .96rem; }
+.prose th, .prose td { text-align: left; padding: .6rem .7rem; border-bottom: 1px solid var(--line); }
+.prose thead th { border-bottom: 2px solid var(--ink); font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.prose tbody tr:last-child td { border-bottom: 0; }
+.prose img { border-radius: var(--r); margin: 1.4rem 0; }
+.prose em { color: var(--muted); }
+
+/* ---------- Kitten / cat cards ---------- */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.4rem; margin-top: 2rem; }
+.card { text-decoration: none; color: inherit; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: #fff; transition: transform .15s ease, box-shadow .15s ease; display: block; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(30,26,18,.12); }
+.card-img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+.card-img--placeholder { display: block; background: linear-gradient(135deg, #ece8df, #d9d3c6); }
+.card-body { display: block; padding: .9rem 1rem 1.1rem; }
+.card-title { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.1rem; display: block; }
+.card-meta { display: flex; align-items: center; gap: .6rem; margin-top: .5rem; flex-wrap: wrap; }
+.card-date { color: var(--muted); font-size: .82rem; }
+.badge { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; padding: .2rem .55rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.badge--ledig { background: #eaf4ea; border-color: #cfe6cf; color: #2f6b34; }
+.badge--reservert { background: #fdf3e2; border-color: #f0dcb4; color: #97651a; }
+.badge--solgt, .badge--beholdes { background: #f1efeb; color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--ink); color: #8f8b82; padding: 1.6rem 2.8rem;
+  font-size: .82rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: .6rem;
+}
+.site-footer a { color: #cfccc4; }
+.footer-links a:hover { color: var(--gold-soft); }
+
+/* ---------- Focus ---------- */
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .layout { display: block; }
+  .sidebar {
+    width: auto; flex: none; height: auto; position: static;
+    padding: 1.2rem 1.4rem; flex-direction: column; gap: 1rem;
+  }
+  .sidebar-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .brand-tagline { max-width: 30ch; }
+  .nav-toggle { display: inline-flex; }
+  .nav { display: none; }
+  .sidebar.is-open .nav { display: block; }
+  .hero { min-height: 56vh; }
+  .hero-overlay, .page, .site-footer { padding-left: 1.4rem; padding-right: 1.4rem; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

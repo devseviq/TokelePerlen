@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "nb-NO" }}">
+{{ partial "head.html" . }}
+<body>
+  <a class="skip-link" href="#main">Hopp til innhold</a>
+  <div class="layout">
+    {{ partial "sidebar.html" . }}
+    <div class="main-col">
+      <main id="main">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+  </div>
+  <script>
+    (function () {
+      var t = document.querySelector('.nav-toggle');
+      var sb = document.getElementById('sidebar');
+      if (!t || !sb) return;
+      t.addEventListener('click', function () {
+        var open = sb.classList.toggle('is-open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    })();
+  </script>
+</body>
+</html>

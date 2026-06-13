@@ -1,0 +1,33 @@
+<header class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <a class="brand" href="{{ "/" | relLangURL }}">
+      <svg class="brand-mark" viewBox="0 0 64 48" width="58" height="44" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+        <path d="M5 41 C 22 39, 41 31, 59 7"/>
+        <path d="M9 41 C 24 37, 39 28, 51 13"/>
+        <path d="M15 42 C 26 39, 35 33, 43 23"/>
+        <path d="M4 43 C 17 42, 30 39, 45 31"/>
+      </svg>
+      <span class="brand-name">NO<span class="star">*</span>TOKLEPERLEN</span>
+      <span class="brand-tagline">Katteoppdrett av den allergivennlige rasen sibirkatt</span>
+    </a>
+    <button class="nav-toggle" aria-controls="sidebar" aria-expanded="false">
+      <span class="nav-toggle-bar"></span> Meny
+    </button>
+  </div>
+  <nav class="nav" aria-label="Hovedmeny">
+    <ul>
+      {{ range .Site.Menus.main }}
+        <li class="{{ if .HasChildren }}has-children{{ end }}">
+          <a href="{{ .URL | relURL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a>
+          {{ with .Children }}
+            <ul class="submenu">
+              {{ range . }}
+                <li><a href="{{ .URL | relURL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+              {{ end }}
+            </ul>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

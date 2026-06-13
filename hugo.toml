@@ -1,0 +1,81 @@
+baseURL = "https://tokeperlen.github.io/TokelePerlen/"
+# NOTE: the GitHub Pages workflow overrides baseURL automatically (it uses the
+# value GitHub reports), so you don't need to edit this when you attach the
+# tokleperlen.com / .no custom domain. This value is only used by `hugo server`.
+languageCode = "nb-NO"
+title = "NO*Tokleperlen"
+enableRobotsTXT = true
+enableEmoji = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "NO*Tokleperlen – profesjonelt oppdrett av friske, renrasede sibirkatter. Den allergivennlige rasen."
+
+[markup.goldmark.renderer]
+  unsafe = true            # allow inline HTML / comments in page content
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+
+# ---- Navigation (mirrors the current Webnode menu, incl. submenus) ----
+[menu]
+  [[menu.main]]
+    name = "Forside"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Om oppdrettet"
+    identifier = "om"
+    url = "/om-meg/"
+    weight = 2
+  [[menu.main]]
+    name = "Kattene i oppdrettet"
+    parent = "om"
+    url = "/kattene-i-oppdrettet/"
+    weight = 1
+  [[menu.main]]
+    name = "Kattehotell"
+    parent = "om"
+    url = "/kattehotell/"
+    weight = 2
+  [[menu.main]]
+    name = "Kontakt"
+    parent = "om"
+    url = "/kontakt/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Kattunger"
+    identifier = "kattunger"
+    url = "/kattunger/"
+    weight = 3
+  [[menu.main]]
+    name = "Planlagt kull"
+    parent = "kattunger"
+    url = "/planlagt-kull/"
+    weight = 1
+  [[menu.main]]
+    name = "Utstyrsliste"
+    parent = "kattunger"
+    url = "/utstyrsliste/"
+    weight = 2
+  [[menu.main]]
+    name = "Kattunger til salgs"
+    parent = "kattunger"
+    url = "/kattunger-til-salgs/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Kjøpe katt?"
+    url = "/prisliste/"
+    weight = 4
+  [[menu.main]]
+    name = "Venteliste"
+    url = "/venteliste/"
+    weight = 5
+  [[menu.main]]
+    name = "Om rasen"
+    url = "/om-rasen/"
+    weight = 6

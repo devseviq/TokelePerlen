@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="hero{{ if not .Params.hero }} hero--placeholder{{ end }}">
+  {{ with .Params.hero }}
+    <img class="hero-img" src="{{ . | relURL }}" alt="Sibirkatt hos NO*Tokleperlen">
+  {{ end }}
+  <div class="hero-overlay">
+    <h1 class="hero-title">{{ .Title | default .Site.Title }}</h1>
+    {{ with .Params.tagline }}<p class="hero-tagline">{{ . }}</p>{{ end }}
+  </div>
+</section>
+{{ with .Content }}
+<div class="page">
+  <div class="prose">{{ . }}</div>
+</div>
+{{ end }}
+{{ end }}

@@ -1,0 +1,124 @@
+# ------------------------------------------------------------------
+# Sveltia CMS configuration (Decap-compatible)
+# Docs: https://github.com/sveltia/sveltia-cms
+#
+# BEFORE THIS WORKS you must set `base_url` below to your deployed
+# Cloudflare Worker (sveltia-cms-auth). See README.md → "CMS login".
+# ------------------------------------------------------------------
+backend:
+  name: github
+  repo: TokePerlen/TokelePerlen
+  branch: main
+  base_url: https://CHANGE-ME.workers.dev    # <-- your sveltia-cms-auth Worker URL
+
+# Default upload location for collections without their own media_folder
+media_folder: static/images
+public_folder: /images
+
+# Editors see Norwegian labels; the UI itself can be set per-user.
+locale: no
+
+collections:
+  # ============== Fixed pages (edit the text) ==============
+  - name: sider
+    label: Sider
+    label_singular: Side
+    description: Tekstinnholdet på de faste sidene.
+    files:
+      - name: forside
+        label: Forside
+        file: content/_index.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: tagline, label: Undertittel, widget: string, required: false }
+          - { name: hero, label: Hovedbilde (valgfritt), widget: image, required: false }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: om-meg
+        label: Om oppdrettet
+        file: content/om-meg.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: om-rasen
+        label: Om rasen
+        file: content/om-rasen.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: kontakt
+        label: Kontakt
+        file: content/kontakt.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: prisliste
+        label: Kjøpe katt / prisliste
+        file: content/prisliste.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: venteliste
+        label: Venteliste
+        file: content/venteliste.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: kattehotell
+        label: Kattehotell
+        file: content/kattehotell.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: utstyrsliste
+        label: Utstyrsliste
+        file: content/utstyrsliste.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: planlagt-kull
+        label: Planlagt kull
+        file: content/planlagt-kull.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+
+  # ============== Kattunger / kull (Siri legger til disse) ==============
+  - name: kattunger
+    label: Kattunger / kull
+    label_singular: Kull
+    description: Legg til et nytt kull eller en kattunge, med bilder.
+    folder: content/kattunger
+    path: "{{slug}}/index"
+    media_folder: ""          # bilder lagres i samme mappe som kullet
+    public_folder: ""
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{fields.status}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Navn / kull, widget: string }
+      - { name: date, label: Født / dato, widget: datetime, date_format: "DD.MM.YYYY", time_format: false }
+      - name: status
+        label: Status
+        widget: select
+        default: Ledig
+        options: [Ledig, Reservert, Solgt, Beholdes]
+      - { name: id, label: ID-nr (valgfritt), widget: string, required: false }
+      - { name: bilde, label: Hovedbilde, widget: image, required: false }
+      - { name: body, label: Beskrivelse, widget: markdown, required: false }
+
+  # ============== Avlskatter ==============
+  - name: avlskatter
+    label: Avlskatter
+    label_singular: Katt
+    description: Kattene i oppdrettet.
+    folder: content/kattene-i-oppdrettet
+    path: "{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - { name: title, label: Navn, widget: string }
+      - { name: kjonn, label: Kjønn, widget: select, options: [Hunn, Hann], required: false }
+      - { name: bilde, label: Bilde, widget: image, required: false }
+      - { name: body, label: Om katten, widget: markdown, required: false }

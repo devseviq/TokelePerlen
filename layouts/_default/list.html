@@ -1,0 +1,30 @@
+{{ define "main" }}
+<article class="page">
+  <header class="page-head">
+    <h1 class="page-title">{{ .Title }}</h1>
+  </header>
+  {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+  {{ $children := where .Pages "Kind" "page" }}
+  {{ with $children }}
+  <div class="cards">
+    {{ range .ByDate.Reverse }}
+      {{ $r := .Resources.GetMatch (.Params.bilde | default "no-image") }}
+      <a class="card" href="{{ .RelPermalink }}">
+        {{ with $r }}
+          <img class="card-img" src="{{ .RelPermalink }}" alt="{{ $.Title }}">
+        {{ else }}
+          <span class="card-img card-img--placeholder" aria-hidden="true"></span>
+        {{ end }}
+        <span class="card-body">
+          <span class="card-title">{{ .Title }}</span>
+          <span class="card-meta">
+            {{ with .Params.status }}<span class="badge badge--{{ . | lower }}">{{ . }}</span>{{ end }}
+            {{ with .Date }}{{ if gt .Year 1 }}<span class="card-date">{{ .Format "02.01.2006" }}</span>{{ end }}{{ end }}
+          </span>
+        </span>
+      </a>
+    {{ end }}
+  </div>
+  {{ end }}
+</article>
+{{ end }}
