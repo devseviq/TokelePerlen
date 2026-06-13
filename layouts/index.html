@@ -2,6 +2,13 @@
 <section class="hero{{ if not .Params.hero }} hero--placeholder{{ end }}">
   {{ with .Params.hero }}
     <img class="hero-img" src="{{ . | relURL }}" alt="Sibirkatt hos NO*Tokleperlen">
+  {{ else }}
+    <svg class="hero-wing" viewBox="0 0 64 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+      <path d="M5 41 C 22 39, 41 31, 59 7"/>
+      <path d="M9 41 C 24 37, 39 28, 51 13"/>
+      <path d="M15 42 C 26 39, 35 33, 43 23"/>
+      <path d="M4 43 C 17 42, 30 39, 45 31"/>
+    </svg>
   {{ end }}
   <div class="hero-overlay">
     <h1 class="hero-title">{{ .Title | default .Site.Title }}</h1>

@@ -2,11 +2,17 @@ baseURL = "https://tokeperlen.github.io/TokelePerlen/"
 # NOTE: the GitHub Pages workflow overrides baseURL automatically (it uses the
 # value GitHub reports), so you don't need to edit this when you attach the
 # tokleperlen.com / .no custom domain. This value is only used by `hugo server`.
-languageCode = "nb-NO"
+defaultContentLanguage = "nb"
 title = "NO*Tokleperlen"
 enableRobotsTXT = true
 enableEmoji = true
 disableKinds = ["taxonomy", "term"]
+
+[languages]
+  [languages.nb]
+    label = "Norsk"
+    locale = "nb_NO"
+    weight = 1
 
 [params]
   description = "NO*Tokleperlen – profesjonelt oppdrett av friske, renrasede sibirkatter. Den allergivennlige rasen."
