@@ -311,8 +311,8 @@
 </div>
 
 <script>
-  // To enable automatic e-mail delivery: paste a free access key from web3forms.com below.
-  var ACCESS_KEY = "PLACEHOLDER_WEB3FORMS_KEY";
+  // Submissions are stored by a Cloudflare Worker (D1). Fallback below copies/e-mails.
+  var WORKER_URL = "https://tokleperlen-innspill.espen-severinsen.workers.dev";
   var RECIPIENT  = "espen.severinsen@gmail.com";
 
   var form = document.getElementById('form');
@@ -347,21 +347,37 @@
     try{ window.location.href = mail; }catch(e){}
   }
 
+  function collectAnswers(){
+    var out = {};
+    form.querySelectorAll('.q[data-q]').forEach(function(q){
+      var labelEl = q.querySelector('.q-label');
+      var label = labelEl ? labelEl.innerText.replace(/\s+/g,' ').trim() : '';
+      if(!label) return;
+      var ans = [];
+      q.querySelectorAll('input, textarea').forEach(function(inp){
+        if(inp.type==='checkbox'||inp.type==='radio'){ if(inp.checked) ans.push(inp.dataset.label||inp.value); }
+        else if(inp.value && inp.value.trim()){ ans.push((inp.dataset.label?inp.dataset.label+': ':'')+inp.value.trim()); }
+      });
+      out[label] = ans;
+    });
+    return out;
+  }
+
   form.addEventListener('submit', async function(e){
     e.preventDefault();
-    if(ACCESS_KEY && ACCESS_KEY.indexOf('PLACEHOLDER')===-1){
-      statusEl.textContent = 'Sender …';
-      try{
-        var fd = new FormData(form);
-        fd.set('access_key', ACCESS_KEY);
-        var res = await fetch('https://api.web3forms.com/submit', {method:'POST', body: fd});
-        var data = await res.json();
-        if(data.success){ showThanks(); return; }
-        fallbackSend('Kunne ikke sende automatisk –');
-      }catch(err){ fallbackSend('Kunne ikke sende automatisk –'); }
-    } else {
-      fallbackSend();
-    }
+    statusEl.textContent = 'Sender …';
+    var payload = {
+      name: ((form.querySelector('[name=fylt_ut_av]')||{}).value || ''),
+      summary: buildSummary(),
+      answers: collectAnswers(),
+      botcheck: !!((form.querySelector('[name=botcheck]')||{}).checked)
+    };
+    try{
+      var res = await fetch(WORKER_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      var data = await res.json();
+      if(data && data.success){ showThanks(); return; }
+      fallbackSend('Kunne ikke sende automatisk –');
+    }catch(err){ fallbackSend('Kunne ikke sende automatisk –'); }
   });
 
   document.getElementById('copyBtn').addEventListener('click', function(){ fallbackSend(); });
