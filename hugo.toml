@@ -19,6 +19,9 @@ disableKinds = ["taxonomy", "term"]
   # Preview build: keep the github.io staging copy out of search engines.
   # Set to false (or remove) once the real tokleperlen.com domain is attached.
   noindex = true
+  # Claude assistant endpoint (the /assistent/ page). Fill in after deploying
+  # worker/ — see worker/README.md. e.g. "https://tokleperlen-assistant.<sub>.workers.dev"
+  assistantWorkerURL = "https://tokleperlen-assistant.espen-severinsen.workers.dev"
 
 [markup.goldmark.renderer]
   unsafe = true            # allow inline HTML / comments in page content
