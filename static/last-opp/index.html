@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Last opp bilder · NO*Tokleperlen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#15161a;--paper:#faf6ee;--card:#fffdf8;--text:#23241f;--muted:#6f6e66;--line:#e7e0d2;--gold:#c79a44;--gold-deep:#8a6a1f;--r:14px}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.6}
+  .wrap{max-width:680px;margin:0 auto;padding:22px 18px 80px}
+  .masthead{background:radial-gradient(120% 130% at 85% 0%,rgba(199,154,68,.16),transparent 45%),linear-gradient(160deg,#26282e,#15161a);color:#fff;border-radius:var(--r);padding:30px 26px 26px;position:relative;overflow:hidden}
+  .masthead .wing{position:absolute;right:-10px;top:-6px;width:200px;opacity:.16;color:var(--gold)}
+  .brand{font-family:"Fraunces",serif;font-weight:600;letter-spacing:.14em;font-size:14px;color:#efe9dd}
+  .brand .star{color:var(--gold)}
+  h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(1.5rem,4.4vw,2.1rem);margin:.5rem 0 .35rem}
+  .lede{color:#d9d4c8;margin:.2rem 0 0;max-width:52ch}
+  .card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);padding:20px;margin:18px 0}
+  label.fld{display:block;font-weight:600;margin-bottom:8px}
+  input[type=text]{width:100%;font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+  .drop{margin-top:16px;border:2px dashed #d8cba6;background:#fdfaf1;border-radius:var(--r);padding:30px 18px;text-align:center;cursor:pointer;transition:.15s}
+  .drop:hover,.drop.over{background:#fbf4e2;border-color:var(--gold)}
+  .drop .big{font-family:"Fraunces",serif;font-size:1.15rem;color:var(--ink);margin-bottom:4px}
+  .drop .sub{color:var(--muted);font-size:14.5px}
+  .alt{display:block;text-align:center;margin-top:10px;color:var(--gold-deep);font-size:14.5px;cursor:pointer;text-decoration:underline;background:none;border:0;width:100%}
+  ul.files{list-style:none;margin:16px 0 0;padding:0}
+  ul.files li{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px solid #f0ead9;font-size:15px}
+  ul.files li .nm{flex:1;word-break:break-all;color:#3a3a34}
+  ul.files li .st{font-size:13px;color:var(--muted);white-space:nowrap}
+  ul.files li.done .st{color:#3c7a3c}
+  ul.files li.err .st{color:#b3402f}
+  .btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:600;border-radius:11px;padding:14px 22px;width:100%;font-size:17px}
+  .btn-primary{background:var(--ink);color:#fff;margin-top:18px}
+  .btn-primary:disabled{opacity:.5;cursor:default}
+  #status{text-align:center;color:var(--muted);font-size:14.5px;margin-top:10px;min-height:1.2em}
+  #thanks{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:40px 26px;text-align:center}
+  #thanks svg{width:60px;color:var(--gold)}
+  #thanks h2{font-family:"Fraunces",serif;font-size:1.4rem;margin:.4rem 0 .2rem}
+  #thanks p{color:var(--muted);max-width:40ch;margin:.2rem auto}
+  .hidden{display:none}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <svg class="wing" viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <path d="M5 41 C 22 39, 41 31, 59 7"/><path d="M9 41 C 24 37, 39 28, 51 13"/>
+      <path d="M15 42 C 26 39, 35 33, 43 23"/><path d="M4 43 C 17 42, 30 39, 45 31"/>
+    </svg>
+    <div class="brand">NO<span class="star">*</span>TOKLEPERLEN</div>
+    <h1>Last opp bilder</h1>
+    <p class="lede">Velg bildene du vil sende – av kattene, kattungene, oppdrettet eller deg selv. Du kan velge mange på én gang. Bildene blir automatisk tilpasset for nett før de sendes.</p>
+  </header>
+
+  <div id="panel" class="card">
+    <label class="fld" for="by">Fra hvem? <span style="font-weight:400;color:var(--muted)">(valgfritt)</span></label>
+    <input type="text" id="by" placeholder="Navn">
+
+    <div class="drop" id="drop">
+      <div class="big">📷 Trykk for å velge bilder</div>
+      <div class="sub">eller dra bildene hit (på PC)</div>
+    </div>
+    <button type="button" class="alt" id="folderBtn">Eller velg en hel mappe (på PC)</button>
+
+    <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
+    <input type="file" id="dirInput" webkitdirectory directory multiple class="hidden">
+
+    <ul class="files" id="fileList"></ul>
+
+    <button type="button" class="btn btn-primary" id="uploadBtn" disabled>Last opp</button>
+    <div id="status"></div>
+  </div>
+
+  <div id="thanks">
+    <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M5 41 C 22 39, 41 31, 59 7"/><path d="M9 41 C 24 37, 39 28, 51 13"/>
+      <path d="M15 42 C 26 39, 35 33, 43 23"/><path d="M4 43 C 17 42, 30 39, 45 31"/>
+    </svg>
+    <h2>Tusen takk!</h2>
+    <p id="thanksMsg">Bildene er lastet opp. Du kan lukke siden nå – eller laste opp flere.</p>
+    <button type="button" class="btn btn-primary" id="moreBtn" style="max-width:240px;margin:14px auto 0">Last opp flere</button>
+  </div>
+
+  <footer>NO*Tokleperlen · bildeopplasting</footer>
+</div>
+
+<script>
+  var WORKER = "https://tokleperlen-innspill.espen-severinsen.workers.dev";
+  var TOKEN  = "tkp-opp-7m3k";
+  var MAXDIM = 2400, QUALITY = 0.85;
+
+  var fileInput = document.getElementById('fileInput');
+  var dirInput  = document.getElementById('dirInput');
+  var drop = document.getElementById('drop');
+  var listEl = document.getElementById('fileList');
+  var uploadBtn = document.getElementById('uploadBtn');
+  var statusEl = document.getElementById('status');
+  var queue = [];
+
+  drop.addEventListener('click', function(){ fileInput.click(); });
+  document.getElementById('folderBtn').addEventListener('click', function(){ dirInput.click(); });
+  fileInput.addEventListener('change', function(){ addFiles(fileInput.files); });
+  dirInput.addEventListener('change', function(){ addFiles(dirInput.files); });
+
+  ['dragenter','dragover'].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave','drop'].forEach(function(ev){ drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(e){ if(e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+
+  function addFiles(fileList){
+    for (var i=0;i<fileList.length;i++){
+      var f = fileList[i];
+      if (f.type && f.type.indexOf('image/') !== 0) continue;
+      queue.push({ file:f, status:'venter', el:null });
+    }
+    render();
+  }
+
+  function render(){
+    listEl.innerHTML = '';
+    queue.forEach(function(item, idx){
+      var li = document.createElement('li');
+      if (item.status==='ferdig') li.className='done';
+      if (item.status==='feil') li.className='err';
+      var label = item.status==='ferdig' ? '✓ ferdig' : item.status==='laster' ? 'laster opp…' : item.status==='feil' ? 'feil' : 'klar';
+      li.innerHTML = '<span class="nm">'+escapeHtml(item.file.name)+'</span><span class="st">'+label+'</span>';
+      item.el = li;
+      listEl.appendChild(li);
+    });
+    uploadBtn.disabled = queue.filter(function(q){return q.status==='venter';}).length===0;
+    uploadBtn.textContent = 'Last opp' + (queue.length ? ' ' + queue.filter(function(q){return q.status!=='ferdig';}).length + ' bilder' : '');
+  }
+
+  function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function resize(file){
+    return new Promise(function(resolve){
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function(){
+        try{
+          var w=img.naturalWidth, h=img.naturalHeight;
+          if (Math.max(w,h) > MAXDIM){ var s=MAXDIM/Math.max(w,h); w=Math.round(w*s); h=Math.round(h*s); }
+          var c=document.createElement('canvas'); c.width=w; c.height=h;
+          c.getContext('2d').drawImage(img,0,0,w,h);
+          URL.revokeObjectURL(url);
+          c.toBlob(function(b){ resolve(b || file); }, 'image/jpeg', QUALITY);
+        }catch(e){ URL.revokeObjectURL(url); resolve(file); }
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
+      img.src = url;
+    });
+  }
+
+  uploadBtn.addEventListener('click', async function(){
+    uploadBtn.disabled = true;
+    var by = (document.getElementById('by').value||'').trim();
+    var done=0, fail=0;
+    for (var i=0;i<queue.length;i++){
+      var item = queue[i];
+      if (item.status==='ferdig') { done++; continue; }
+      item.status='laster'; render();
+      try{
+        var blob = await resize(item.file);
+        if (blob.size > 8*1024*1024) { item.status='feil'; fail++; render(); continue; }
+        var nm = item.file.name.replace(/\.(heic|heif|png|webp)$/i, '.jpg');
+        var res = await fetch(WORKER + '/upload?t=' + encodeURIComponent(TOKEN) + '&name=' + encodeURIComponent(nm) + '&by=' + encodeURIComponent(by||'anon'), {
+          method:'POST', headers:{'Content-Type': (blob.type||'image/jpeg')}, body: blob
+        });
+        var d = await res.json();
+        if (d && d.success){ item.status='ferdig'; done++; } else { item.status='feil'; fail++; }
+      }catch(e){ item.status='feil'; fail++; }
+      statusEl.textContent = 'Laster opp… ' + (done+fail) + ' av ' + queue.length;
+      render();
+    }
+    statusEl.textContent='';
+    document.getElementById('thanksMsg').textContent = fail
+      ? (done + ' bilder lastet opp. ' + fail + ' feilet – prøv dem gjerne på nytt.')
+      : (done + ' bilder lastet opp. Du kan lukke siden nå – eller laste opp flere.');
+    document.getElementById('panel').style.display='none';
+    document.getElementById('thanks').style.display='block';
+    window.scrollTo(0,0);
+  });
+
+  document.getElementById('moreBtn').addEventListener('click', function(){
+    queue = queue.filter(function(q){ return q.status==='feil'; }).map(function(q){ return { file:q.file, status:'venter', el:null }; });
+    document.getElementById('thanks').style.display='none';
+    document.getElementById('panel').style.display='block';
+    render();
+  });
+</script>
+</body>
+</html>
