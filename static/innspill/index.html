@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Innspill til ny nettside · NO*Tokleperlen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15161a; --ink-soft:#23242a; --paper:#faf6ee; --card:#fffdf8;
+    --text:#23241f; --muted:#6f6e66; --line:#e7e0d2; --gold:#c79a44; --gold-deep:#8a6a1f;
+    --r:14px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--text);
+    font-family:"Inter",system-ui,sans-serif; font-size:17px; line-height:1.6;
+  }
+  .wrap{max-width:780px; margin:0 auto; padding:22px 18px 80px}
+  a{color:var(--gold-deep)}
+  /* header */
+  .masthead{
+    background:radial-gradient(120% 130% at 85% 0%,rgba(199,154,68,.16),transparent 45%),linear-gradient(160deg,#26282e,#15161a);
+    color:#fff; border-radius:var(--r); padding:30px 26px 28px; position:relative; overflow:hidden;
+  }
+  .masthead .wing{position:absolute; right:-10px; top:-6px; width:210px; opacity:.16; color:var(--gold); pointer-events:none}
+  .brand{display:flex; align-items:center; gap:10px; font-family:"Fraunces",serif; font-weight:600; letter-spacing:.14em; font-size:14px; color:#efe9dd}
+  .brand .star{color:var(--gold)}
+  h1{font-family:"Fraunces",serif; font-weight:600; font-size:clamp(1.5rem,4.4vw,2.1rem); margin:.5rem 0 .35rem; line-height:1.12}
+  .lede{color:#d9d4c8; margin:.2rem 0 0; max-width:54ch}
+  .lede a{color:#f0d79a}
+  .preview{display:inline-block; margin-top:14px; background:var(--gold); color:#1d1a12; font-weight:600;
+    text-decoration:none; padding:9px 15px; border-radius:9px; font-size:15px}
+  /* sections */
+  section{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--gold);
+    border-radius:var(--r); padding:20px 20px 8px; margin:18px 0}
+  section h2{font-family:"Fraunces",serif; font-weight:600; font-size:1.18rem; margin:.1rem 0 .2rem; color:var(--ink)}
+  section .hint{color:var(--muted); font-size:14.5px; margin:.1rem 0 1rem}
+  .q{margin:0 0 20px; padding-bottom:4px}
+  .q-label{display:block; font-weight:600; color:var(--ink); margin-bottom:8px}
+  .q-label .n{color:var(--gold-deep)}
+  .sub{font-weight:400; color:var(--muted); font-size:14.5px}
+  textarea,input[type=text]{
+    width:100%; font:inherit; color:var(--text); background:#fff;
+    border:1px solid var(--line); border-radius:10px; padding:10px 12px;
+  }
+  textarea{min-height:74px; resize:vertical}
+  textarea:focus,input:focus{outline:2px solid var(--gold); outline-offset:1px; border-color:var(--gold)}
+  .opts{display:flex; flex-direction:column; gap:2px}
+  .opt{display:flex; align-items:flex-start; gap:10px; padding:7px 9px; border-radius:9px; cursor:pointer}
+  .opt:hover{background:#faf4e6}
+  .opt input{margin-top:5px; width:17px; height:17px; accent-color:var(--gold)}
+  .opt span{flex:1}
+  .inline{display:flex; flex-wrap:wrap; gap:12px}
+  .price{display:grid; grid-template-columns:1fr; gap:10px}
+  .price .row{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:8px; align-items:center}
+  .price .row > span{font-size:14px; color:var(--muted)}
+  @media(max-width:520px){ .price .row{grid-template-columns:1fr} .price .row > span{margin-top:4px} }
+  .flag{background:#fbf3df; border:1px solid #ecdcb4; border-radius:10px; padding:6px 10px; font-size:14px; color:var(--gold-deep); margin-bottom:10px}
+  /* actions */
+  .actions{padding-top:8px; margin-top:6px}
+  .btn{appearance:none; border:0; cursor:pointer; font:inherit; font-weight:600; border-radius:11px; padding:14px 22px}
+  .btn-primary{background:var(--ink); color:#fff; width:100%; font-size:17px}
+  .btn-primary:hover{background:#000}
+  .btn-link{background:none; color:var(--gold-deep); text-decoration:underline; padding:10px; display:block; margin:6px auto 0; width:auto}
+  #status{text-align:center; color:var(--muted); font-size:14.5px; min-height:1.2em; margin-top:8px}
+  /* thanks */
+  #thanks{display:none; background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:40px 26px; text-align:center}
+  #thanks svg{width:64px; color:var(--gold); opacity:.9}
+  #thanks h2{font-family:"Fraunces",serif; font-size:1.5rem; margin:.4rem 0 .2rem; color:var(--ink)}
+  #thanks p{color:var(--muted); margin:.2rem auto; max-width:42ch}
+  .hp{position:absolute; left:-9999px}
+  footer{text-align:center; color:var(--muted); font-size:13px; margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <svg class="wing" viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+      <path d="M5 41 C 22 39, 41 31, 59 7"/><path d="M9 41 C 24 37, 39 28, 51 13"/>
+      <path d="M15 42 C 26 39, 35 33, 43 23"/><path d="M4 43 C 17 42, 30 39, 45 31"/>
+    </svg>
+    <div class="brand">NO<span class="star">*</span>TOKLEPERLEN</div>
+    <h1>Innspill til den nye nettsiden</h1>
+    <p class="lede">Hei Siri! Vi flytter nettsiden din over til en raskere og penere løsning som du selv skal kunne styre. Svar på det du har lyst til – hopp over det du er usikker på. Stikkord holder helt fint.</p>
+    <a class="preview" href="https://devseviq.github.io/TokelePerlen/" target="_blank" rel="noopener">Se utkastet av siden →</a>
+  </header>
+
+  <form id="form" novalidate>
+    <!-- honeypot -->
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+    <input type="hidden" name="subject" value="Innspill til ny nettside – fra Tokleperlen-skjemaet">
+
+    <section>
+      <div class="q">
+        <label class="q-label" for="fylt_ut_av">Fylt ut av <span class="sub">(valgfritt)</span></label>
+        <input type="text" id="fylt_ut_av" name="fylt_ut_av" placeholder="Navn">
+      </div>
+    </section>
+
+    <!-- DEL 1 -->
+    <section>
+      <h2>Del 1 · Helhet og mål</h2>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">1.</span> Hva synes du om utkastet? Hva liker du, og hva liker du ikke?</span>
+        <textarea name="q1_inntrykk"></textarea>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">2.</span> Hva er det viktigste at siden skal gjøre? <span class="sub">(velg gjerne flere)</span></span>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="q2_maal" data-label="Selge kattunger / fylle ventelisten"><span>Selge kattunger / fylle ventelisten</span></label>
+          <label class="opt"><input type="checkbox" name="q2_maal" data-label="Vise frem oppdrettet og kattene"><span>Vise frem oppdrettet og kattene</span></label>
+          <label class="opt"><input type="checkbox" name="q2_maal" data-label="Informere om rasen og det allergivennlige"><span>Informere om rasen og det allergivennlige</span></label>
+          <label class="opt"><input type="checkbox" name="q2_maal" data-label="Markedsføre kattehotellet"><span>Markedsføre kattehotellet</span></label>
+        </div>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">3.</span> Hvilken følelse vil du at folk skal sitte igjen med? <span class="sub">(f.eks. seriøs, varm/koselig, eksklusiv, leken)</span></span>
+        <input type="text" name="q3_folelse">
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">4.</span> Hvem er det viktigste publikummet?</span>
+        <input type="text" name="q4_publikum" placeholder="kattungekjøpere, kattehotell-kunder, andre oppdrettere …">
+      </div>
+    </section>
+
+    <!-- DEL 2 -->
+    <section>
+      <h2>Del 2 · Design og utseende</h2>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">5.</span> Dagens utkast har mørk meny + gull/messing-detaljer. Vil du …</span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q5_uttrykk" data-label="Beholde uttrykket"><span>Beholde dette uttrykket</span></label>
+          <label class="opt"><input type="radio" name="q5_uttrykk" data-label="Lysere og luftigere"><span>Ha det lysere og luftigere</span></label>
+          <label class="opt"><input type="radio" name="q5_uttrykk" data-label="Varmere og koseligere"><span>Ha det varmere og koseligere</span></label>
+          <label class="opt"><input type="radio" name="q5_uttrykk" data-label="Mer fargerikt"><span>Ha det mer fargerikt</span></label>
+        </div>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">6.</span> Nettsider du synes er fine? <span class="sub">Lim gjerne inn lenker.</span></span>
+        <textarea name="q6_inspirasjon"></textarea>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">7.</span> Logo / symbol <span class="sub">(vi bruker nå en gull-«vinge» som plassholder)</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q7_logo" data-label="Har logo fra før"><span>Jeg har en logo fra før (sender den)</span></label>
+          <label class="opt"><input type="radio" name="q7_logo" data-label="Vil ha logo laget"><span>Jeg vil gjerne ha en logo laget</span></label>
+          <label class="opt"><input type="radio" name="q7_logo" data-label="Vingen er fin"><span>Vingen er fin å beholde</span></label>
+        </div>
+        <input type="text" name="q7_logo_kommentar" placeholder="Kommentar (valgfritt)" style="margin-top:8px">
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">8.</span> Favorittfarger – eller farger du IKKE vil ha?</span>
+        <input type="text" name="q8_farger">
+      </div>
+    </section>
+
+    <!-- DEL 3 -->
+    <section>
+      <h2>Del 3 · Innhold og sider</h2>
+      <p class="hint">Sidene nå: Forside, Om oppdrettet, Kattene i oppdrettet, Kattehotell, Kontakt, Planlagt kull, Utstyrsliste, Kattunger til salgs, Kjøpe katt / prisliste, Venteliste, Om rasen.</p>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">9.</span> Sider du vil legge til, fjerne eller gi nytt navn?</span>
+        <textarea name="q9_sider"></textarea>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">10.</span> Vil du ha noen av disse?</span>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="Egen side per katt"><span>Egen side per katt (bilder, farge/EMS-kode, stamtavle)</span></label>
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="Oversikt over tidligere kull"><span>Oversikt over tidligere kull (historikk)</span></label>
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="Tilbakemeldinger fra kjøpere"><span>Tilbakemeldinger / anbefalinger fra kjøpere</span></label>
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="FAQ"><span>Ofte stilte spørsmål (FAQ)</span></label>
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="Bildegalleri"><span>Bildegalleri</span></label>
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="Nyheter/blogg"><span>Nyheter / blogg</span></label>
+          <label class="opt"><input type="checkbox" name="q10_onsker" data-label="Utstillingsresultater"><span>Utstillingsresultater</span></label>
+        </div>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">11.</span> Du lager ukentlige YouTube-videoer av kullene – skal de vises på siden?</span>
+        <div class="opts inline">
+          <label class="opt"><input type="radio" name="q11_youtube" data-label="Ja"><span>Ja, gjerne</span></label>
+          <label class="opt"><input type="radio" name="q11_youtube" data-label="Nei"><span>Nei</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEL 4 -->
+    <section>
+      <h2>Del 4 · Utvidelse og funksjoner</h2>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">12.</span> Ønsker du noen av disse funksjonene?</span>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="q12_funksjoner" data-label="Kontaktskjema"><span>Kontaktskjema (folk fyller ut i stedet for å sende e-post)</span></label>
+          <label class="opt"><input type="checkbox" name="q12_funksjoner" data-label="Påmelding til venteliste på siden"><span>Påmelding til venteliste direkte på siden</span></label>
+          <label class="opt"><input type="checkbox" name="q12_funksjoner" data-label="Bildegallerier enkle å oppdatere"><span>Bildegallerier som er enkle å oppdatere selv</span></label>
+          <label class="opt"><input type="checkbox" name="q12_funksjoner" data-label="Vise produkter fra TinyPaws"><span>Visning av / lenker til produktene i nettbutikken din (TinyPaws)</span></label>
+          <label class="opt"><input type="checkbox" name="q12_funksjoner" data-label="Engelsk versjon"><span>Engelsk versjon av siden</span></label>
+          <label class="opt"><input type="checkbox" name="q12_funksjoner" data-label="Nyhetsbrev"><span>Nyhetsbrev</span></label>
+        </div>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">13.</span> Hvordan vil du helst at folk skal ta kontakt?</span>
+        <input type="text" name="q13_kontaktmate" placeholder="e-post, Facebook, skjema, telefon …">
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">14.</span> Instagram eller andre sosiale medier vi bør lenke til?</span>
+        <input type="text" name="q14_sosiale">
+      </div>
+    </section>
+
+    <!-- DEL 5 -->
+    <section>
+      <h2>Del 5 · Bilder og materiell</h2>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">15.</span> Har du gode bilder vi kan bruke? <span class="sub">(katter, kattunger, oppdrettet, deg)</span></span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q15_bilder" data-label="Ja, kan sende mappe/lenke"><span>Ja, jeg kan sende en mappe / lenke</span></label>
+          <label class="opt"><input type="radio" name="q15_bilder" data-label="Noen, trenger flere"><span>Noen, men jeg trenger å ta flere</span></label>
+          <label class="opt"><input type="radio" name="q15_bilder" data-label="Nei, ikke ennå"><span>Nei, ikke ennå</span></label>
+        </div>
+        <input type="text" name="q15_kommentar" placeholder="Kommentar / lenke (valgfritt)" style="margin-top:8px">
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">16.</span> Vil du ha ett stort «velkomstbilde» øverst på forsiden? Hvilket motiv?</span>
+        <textarea name="q16_velkomstbilde"></textarea>
+      </div>
+    </section>
+
+    <!-- DEL 6 -->
+    <section>
+      <h2>Del 6 · Redigering (du styrer selv)</h2>
+      <p class="hint">Tanken er at du selv enkelt skal kunne legge inn kull, kattunger og oppdatere ventelisten – helt uten å kunne noe teknisk.</p>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">17.</span> Hva oppdaterer du oftest?</span>
+        <input type="text" name="q17_oppdaterer" placeholder="kullene, ventelisten, planlagte kull, priser …">
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">18.</span> Hvor mye vil du styre selv?</span>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="q18_styring" data-label="Styre alt selv"><span>Jeg vil gjerne styre alt selv</span></label>
+          <label class="opt"><input type="radio" name="q18_styring" data-label="Det enkle selv, hjelp til resten"><span>Jeg gjør det enkle (kattunger, venteliste) og får hjelp til resten</span></label>
+          <label class="opt"><input type="radio" name="q18_styring" data-label="Helst at noen andre oppdaterer"><span>Jeg vil helst at noen andre oppdaterer for meg</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEL 7 -->
+    <section>
+      <h2>Del 7 · Raske avklaringer</h2>
+      <p class="hint">Noen ting på den nåværende siden er litt uklare – kan du bekrefte?</p>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">19.</span> Priser <span class="sub">– hva er riktig nå?</span></span>
+        <div class="flag">«Steg 3» sier «totalt 18.000 kr», men pristabellen sier Kosekatt 19.500 kr.</div>
+        <div class="price">
+          <div class="row"><span>Kosekatt</span><input type="text" name="q19_kosekatt_pris" placeholder="totalpris kr"><input type="text" name="q19_kosekatt_gebyr" placeholder="reservasjon kr"></div>
+          <div class="row"><span>Avlskatt</span><input type="text" name="q19_avlskatt_pris" placeholder="totalpris kr"><input type="text" name="q19_avlskatt_gebyr" placeholder="reservasjon kr"></div>
+        </div>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">20.</span> Antall katter <span class="sub">– forsiden sier «2 hunner og 1 hann», «Om oppdrettet» sier «fem». Hvor mange har du nå, og hvor mange i avl?</span></span>
+        <textarea name="q20_antall"></textarea>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">21.</span> Facebook – er denne siden riktig? <span class="sub">facebook.com/NO-Tokleperlen-271688623039903</span></span>
+        <input type="text" name="q21_facebook" placeholder="Ja / nei / riktig lenke">
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">22.</span> Døde produktlenker på utstyrslisten – lenke heller til kategoriene i din egen TinyPaws-butikk?</span>
+        <div class="opts inline">
+          <label class="opt"><input type="radio" name="q22_dodelenker" data-label="Ja, lenk til TinyPaws"><span>Ja, lenk til TinyPaws</span></label>
+          <label class="opt"><input type="radio" name="q22_dodelenker" data-label="Nei"><span>Nei</span></label>
+        </div>
+      </div>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">23.</span> «Siris må ha»-anbefalingene – vil du ha dem med? Hvilke produkter (og TinyPaws-lenker)?</span>
+        <textarea name="q23_siris_maa_ha"></textarea>
+      </div>
+    </section>
+
+    <!-- DEL 8 -->
+    <section>
+      <h2>Til slutt</h2>
+      <div class="q" data-q>
+        <span class="q-label"><span class="n">24.</span> Andre ønsker, drømmer eller idéer? Skriv helt fritt.</span>
+        <textarea name="q24_annet" style="min-height:100px"></textarea>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button type="submit" class="btn btn-primary">Send inn svarene</button>
+      <button type="button" class="btn btn-link" id="copyBtn">Eller: kopier svarene og send dem selv</button>
+      <div id="status"></div>
+    </div>
+  </form>
+
+  <div id="thanks">
+    <svg viewBox="0 0 64 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <path d="M5 41 C 22 39, 41 31, 59 7"/><path d="M9 41 C 24 37, 39 28, 51 13"/>
+      <path d="M15 42 C 26 39, 35 33, 43 23"/><path d="M4 43 C 17 42, 30 39, 45 31"/>
+    </svg>
+    <h2>Tusen takk, Siri!</h2>
+    <p>Svarene dine er sendt. Jo mer du fyller ut, jo nærmere kommer vi en side akkurat slik du vil ha den. 🐈</p>
+  </div>
+
+  <footer>NO*Tokleperlen · innspillsskjema</footer>
+</div>
+
+<script>
+  // To enable automatic e-mail delivery: paste a free access key from web3forms.com below.
+  var ACCESS_KEY = "PLACEHOLDER_WEB3FORMS_KEY";
+  var RECIPIENT  = "espen.severinsen@gmail.com";
+
+  var form = document.getElementById('form');
+  var statusEl = document.getElementById('status');
+
+  function buildSummary(){
+    var out = "INNSPILL TIL NY NETTSIDE – NO*Tokleperlen\n";
+    var navn = (form.querySelector('[name=fylt_ut_av]')||{}).value;
+    if(navn && navn.trim()) out += "Fylt ut av: " + navn.trim() + "\n";
+    out += "\n";
+    form.querySelectorAll('.q[data-q]').forEach(function(q){
+      var label = (q.querySelector('.q-label')||{}).innerText;
+      if(!label) return;
+      label = label.replace(/\s+/g,' ').trim();
+      var ans = [];
+      q.querySelectorAll('input, textarea').forEach(function(inp){
+        if(inp.type==='checkbox'||inp.type==='radio'){ if(inp.checked) ans.push(inp.dataset.label||inp.value); }
+        else if(inp.value && inp.value.trim()){ ans.push((inp.dataset.label?inp.dataset.label+': ':'')+inp.value.trim()); }
+      });
+      out += label + "\n" + (ans.length ? ans.map(function(a){return "  - "+a;}).join("\n") : "  (ikke besvart)") + "\n\n";
+    });
+    return out;
+  }
+
+  function showThanks(){ form.style.display='none'; document.getElementById('thanks').style.display='block'; window.scrollTo(0,0); }
+
+  function fallbackSend(note){
+    var summary = buildSummary();
+    try{ navigator.clipboard && navigator.clipboard.writeText(summary); }catch(e){}
+    var mail = 'mailto:'+RECIPIENT+'?subject='+encodeURIComponent('Innspill til ny nettside – Tokleperlen')+'&body='+encodeURIComponent(summary);
+    statusEl.innerHTML = (note?note+' ':'') + 'Svarene er kopiert. <a href="'+mail+'">Åpne e-post til Espen</a>, eller lim inn der du vil sende.';
+    try{ window.location.href = mail; }catch(e){}
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(ACCESS_KEY && ACCESS_KEY.indexOf('PLACEHOLDER')===-1){
+      statusEl.textContent = 'Sender …';
+      try{
+        var fd = new FormData(form);
+        fd.set('access_key', ACCESS_KEY);
+        var res = await fetch('https://api.web3forms.com/submit', {method:'POST', body: fd});
+        var data = await res.json();
+        if(data.success){ showThanks(); return; }
+        fallbackSend('Kunne ikke sende automatisk –');
+      }catch(err){ fallbackSend('Kunne ikke sende automatisk –'); }
+    } else {
+      fallbackSend();
+    }
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', function(){ fallbackSend(); });
+</script>
+</body>
+</html>
