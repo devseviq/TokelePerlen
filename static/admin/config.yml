@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------
 backend:
   name: github
-  repo: TokePerlen/TokelePerlen
+  repo: devseviq/TokelePerlen
   branch: main
   base_url: https://CHANGE-ME.workers.dev    # <-- your sveltia-cms-auth Worker URL
 
@@ -78,6 +78,24 @@ collections:
       - name: planlagt-kull
         label: Planlagt kull
         file: content/planlagt-kull.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: kattunger-til-salgs
+        label: Kattunger til salgs
+        file: content/kattunger-til-salgs.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: kattunger-intro
+        label: Kattunger (introtekst)
+        file: content/kattunger/_index.md
+        fields:
+          - { name: title, label: Tittel, widget: string }
+          - { name: body, label: Innhold, widget: markdown }
+      - name: kattene-intro
+        label: Kattene i oppdrettet (introtekst)
+        file: content/kattene-i-oppdrettet/_index.md
         fields:
           - { name: title, label: Tittel, widget: string }
           - { name: body, label: Innhold, widget: markdown }
