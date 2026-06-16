@@ -9,7 +9,7 @@ backend:
   name: github
   repo: devseviq/TokelePerlen
   branch: main
-  base_url: https://CHANGE-ME.workers.dev    # <-- your sveltia-cms-auth Worker URL
+  base_url: https://sveltia-cms-auth.espen-severinsen.workers.dev    # sveltia-cms-auth Worker
 
 # Default upload location for collections without their own media_folder
 media_folder: static/images
