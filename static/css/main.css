@@ -271,6 +271,33 @@ main { flex: 1; }
   .hero-overlay, .page, .site-footer { padding-left: 1.4rem; padding-right: 1.4rem; }
 }
 
+/* ---------- Cats as cards (Kattene i oppdrettet) ---------- */
+.cat-group { /* group heading inherits .prose h2 (Fraunces) */ }
+.cards--cats { grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); gap: 1.1rem; margin-top: 1.1rem; }
+.cat-card { cursor: default; }
+.cat-card:hover { transform: none; box-shadow: none; }
+/* photo-coming placeholder: the cat's initial as a Fraunces monogram + a faint wing */
+.card-img--mono {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  aspect-ratio: 4 / 3; position: relative; overflow: hidden;
+  background: radial-gradient(125% 120% at 28% 18%, #f3eee4, #e4ded0 68%, #d9d2c2);
+}
+.card-img--mono::before {
+  content: ""; position: absolute; right: -6%; bottom: -10%; width: 64%; height: 64%;
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 48' fill='none' stroke='%23c79a44' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 41 C 22 39, 41 31, 59 7'/%3E%3Cpath d='M9 41 C 24 37, 39 28, 51 13'/%3E%3Cpath d='M15 42 C 26 39, 35 33, 43 23'/%3E%3Cpath d='M4 43 C 17 42, 30 39, 45 31'/%3E%3C/svg%3E");
+  opacity: .1; transform: rotate(-4deg); pointer-events: none;
+}
+.cat-mono {
+  font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 2.7rem; line-height: 1;
+  color: var(--gold); opacity: .85; position: relative; z-index: 1; letter-spacing: .02em;
+}
+.cat-photo-note {
+  position: absolute; bottom: .5rem; left: 0; right: 0; text-align: center;
+  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: #a89f8b; z-index: 2;
+}
+.cat-card .card-title { font-size: 1.05rem; }
+.cat-reg { display: block; font-size: .74rem; color: var(--muted); margin-top: .15rem; line-height: 1.3; }
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }

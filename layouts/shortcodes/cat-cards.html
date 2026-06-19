@@ -1,0 +1,24 @@
+{{- with hugo.Data.cats -}}
+{{- range .groups }}
+<h2 class="cat-group">{{ .title }}</h2>
+<div class="cards cards--cats">
+  {{- range .cats }}
+  {{- $cat := . }}
+  <article class="card cat-card">
+    {{- with $cat.photo }}
+    <img class="card-img" src="{{ . | relURL }}" alt="{{ $cat.call }}" loading="lazy">
+    {{- else }}
+    <span class="card-img card-img--mono" aria-hidden="true">
+      <span class="cat-mono">{{ substr $cat.call 0 1 | upper }}</span>
+      <span class="cat-photo-note">Foto kommer</span>
+    </span>
+    {{- end }}
+    <span class="card-body">
+      <span class="card-title">{{ $cat.call }}</span>
+      {{- with $cat.reg }}<span class="cat-reg">{{ . }}</span>{{ end }}
+    </span>
+  </article>
+  {{- end }}
+</div>
+{{- end }}
+{{- end -}}

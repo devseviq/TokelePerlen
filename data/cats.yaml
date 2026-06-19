@@ -1,0 +1,27 @@
+# Cats shown on /kattene-i-oppdrettet/ as cards.
+# `call` = everyday name (drives the card title + the monogram initial).
+# `reg`  = full registered name (shown small under the call name; optional).
+# Later: drop a photo in static/cats/ and add e.g. `photo: /cats/leia.jpg` to that
+# cat — the card swaps the monogram placeholder for the image automatically.
+# NOTE: call names below are a best guess from the registered names — adjust freely.
+groups:
+  - title: "Hunner"
+    cats:
+      - call: "Fleur"
+        reg: "NO*Tokleperlen Fleur Isabelle Delacour"
+      - call: "Leia"
+        reg: "NO*Dollaråsen Leia"
+      - call: "Inndunn"
+        reg: "NO*North Saga Inndunn"
+  - title: "Hanner"
+    cats:
+      - call: "Odin"
+        reg: "NO*North Saga Odin"
+  - title: "Kastrater / tidligere avlskatter"
+    cats:
+      - call: "Fenrik"
+      - call: "Loke"
+      - call: "Luca"
+      - call: "Arya"
+      - call: "Bartemius"
+      - call: "Valhall"
