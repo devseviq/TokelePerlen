@@ -9,8 +9,10 @@ groups:
     cats:
       - call: "Fleur"
         reg: "NO*Tokleperlen Fleur Isabelle Delacour"
+        photo: "cats/fleur.png"
       - call: "Leia"
         reg: "NO*Dollaråsen Leia"
+        photo: "cats/leia.png"
       - call: "Inndunn"
         reg: "NO*North Saga Inndunn"
   - title: "Hanner"

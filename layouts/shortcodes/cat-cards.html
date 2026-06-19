@@ -4,9 +4,11 @@
 <div class="cards cards--cats">
   {{- range .cats }}
   {{- $cat := . }}
+  {{- $img := "" }}{{ with $cat.photo }}{{ $img = resources.Get . }}{{ end }}
   <article class="card cat-card">
-    {{- with $cat.photo }}
-    <img class="card-img" src="{{ . | relURL }}" alt="{{ $cat.call }}" loading="lazy">
+    {{- if $img }}
+    {{- $p := $img.Resize "600x webp" }}
+    <img class="card-img" src="{{ $p.RelPermalink }}" width="{{ $p.Width }}" height="{{ $p.Height }}" alt="{{ $cat.call }}" loading="lazy">
     {{- else }}
     <span class="card-img card-img--mono" aria-hidden="true">
       <span class="cat-mono">{{ substr $cat.call 0 1 | upper }}</span>
