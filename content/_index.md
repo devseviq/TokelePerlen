@@ -1,7 +1,7 @@
 ---
 title: "NO*Tokleperlen"
 tagline: "Katteoppdrett av den allergivennlige rasen sibirkatt"
-hero: ""
+hero: "img/hero.webp"
 ---
 
 ## NO*Tokleperlens sibirkatter

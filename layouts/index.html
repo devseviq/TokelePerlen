@@ -1,7 +1,10 @@
 {{ define "main" }}
 <section class="hero{{ if not .Params.hero }} hero--placeholder{{ end }}">
   {{ with .Params.hero }}
-    <img class="hero-img" src="{{ . | relURL }}" alt="Sibirkatt hos NO*Tokleperlen">
+    {{ with resources.Get . }}
+      {{ $h := .Resize "1800x webp" }}
+      <img class="hero-img" src="{{ $h.RelPermalink }}" width="{{ $h.Width }}" height="{{ $h.Height }}" alt="Sibirkatt hos NO*Tokleperlen">
+    {{ end }}
   {{ else }}
     <svg class="hero-wing" viewBox="0 0 64 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
       <path d="M5 41 C 22 39, 41 31, 59 7"/>
