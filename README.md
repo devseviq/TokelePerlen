@@ -4,7 +4,7 @@ Static site built with **Hugo**, with **Sveltia CMS** layered on top so Siri can
 kittens/litters and edit pages without touching code. Deploys to **GitHub Pages** via
 GitHub Actions. Content is in Norwegian; code/docs are in English.
 
-Repo: `TokePerlen/TokelePerlen` · push from your `devseviq` account.
+Repo: `devseviq/TokelePerlen` · push from your `devseviq` account.
 
 ---
 
@@ -61,19 +61,23 @@ need to edit `hugo.toml` when the custom domain is attached.
 
 ---
 
-## Staging on tokleperlen.com (do this before touching .no)
+## Fast DNS-only staging on tokleperlen.com
 
-Webnode won't let you delegate nameservers, so the fast way to test a real custom domain is to
-point `.com`'s records straight at GitHub Pages from Webnode. `.com` is your secondary domain, so
-the live `.no` site stays untouched on Webnode the whole time.
+If you only want to test a real custom domain without moving registrar/DNS
+ownership yet, point `.com` records straight at GitHub Pages from Webnode. `.com`
+is the secondary domain, so the live `.no` site stays untouched on Webnode during
+this rehearsal.
 
-1. Repo **Settings → Pages → Custom domain** → enter `www.tokleperlen.com`. GitHub commits a `CNAME` file.
+1. Repo **Settings → Pages → Custom domain** → enter `www.tokleperlen.com`.
+   With the current GitHub Actions Pages workflow, GitHub stores the custom
+   domain setting; no `CNAME` file is required.
 2. In Webnode **Manage DNS** for `tokleperlen.com`:
-   - `www` → CNAME → `tokeperlen.github.io`
+   - `www` → CNAME → `devseviq.github.io`
    - apex `@` → A records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
 3. Wait for DNS to propagate; GitHub issues a Let's Encrypt cert. Tick **Enforce HTTPS** once it's available.
 
-(Cloudflare enters the picture later, when the domains move off Webnode — see "Migration sequence".)
+For the real move off Webnode, use Cloudflare DNS instead. See the root workspace
+note `ops/tokleperlen-com-webnode-move-evaluation.md`.
 
 ---
 
@@ -97,7 +101,7 @@ Note the URL: `https://sveltia-cms-auth.<your-subdomain>.workers.dev`
 **Settings → Variables**:
    - `GITHUB_CLIENT_ID` = client id
    - `GITHUB_CLIENT_SECRET` = client secret
-   - *(optional)* `ALLOWED_DOMAINS` = `tokleperlen.com,tokeperlen.github.io`
+   - *(optional)* `ALLOWED_DOMAINS` = `tokleperlen.com,www.tokleperlen.com,devseviq.github.io`
 
 **E. Point the CMS at the Worker** — in `static/admin/config.yml`, set `backend.base_url` to your
 Worker URL. Commit & push.
