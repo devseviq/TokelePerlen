@@ -31,6 +31,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Build
         # Pinned to the custom domain: configure-pages only reports the custom-domain
         # base_url once GitHub fully verifies it, which lags cert issuance — so until
