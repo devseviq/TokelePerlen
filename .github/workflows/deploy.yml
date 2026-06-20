@@ -38,7 +38,7 @@ jobs:
         # base_url once GitHub fully verifies it, which lags cert issuance — so until
         # then it returns the github.io subpath and breaks asset paths on the apex.
         # When promoting to tokleperlen.no, update this baseURL accordingly.
-        run: hugo --gc --minify --baseURL "https://tokleperlen.com/"
+        run: hugo --gc --minify --baseURL "https://www.tokleperlen.com/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
