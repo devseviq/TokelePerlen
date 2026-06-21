@@ -16,12 +16,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   description = "NO*Tokleperlen – profesjonelt oppdrett av friske, renrasede sibirkatter. Den allergivennlige rasen."
-  # Preview build: keep the github.io staging copy out of search engines.
-  # Set to false (or remove) once the real tokleperlen.com domain is attached.
-  noindex = true
-  # Claude assistant endpoint (the /assistent/ page). Fill in after deploying
-  # worker/ — see worker/README.md. e.g. "https://tokleperlen-assistant.<sub>.workers.dev"
-  assistantWorkerURL = "https://tokleperlen-assistant-pro.espen-severinsen.workers.dev"
+  noindex = false
 
 [markup.goldmark.renderer]
   unsafe = true            # allow inline HTML / comments in page content
