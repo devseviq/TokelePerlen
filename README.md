@@ -64,7 +64,7 @@ hot-reload. `rg` tip: `hugo server --navigateToChanged` jumps the browser to the
 
 1. On GitHub: **Settings → Pages → Build and deployment → Source = "GitHub Actions"** (one-time).
 2. Push to `main`. `deploy.yml` builds Hugo and publishes.
-3. Site goes live at `https://devseviq.github.io/TokelePerlen/` until you attach a custom domain.
+3. Site is live at the custom domain `https://www.tokleperlen.com/`.
 
 The workflow sets Hugo's `baseURL` automatically from what Pages reports, so you do **not**
 need to edit `hugo.toml` when the custom domain is attached.
